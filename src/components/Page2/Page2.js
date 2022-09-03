@@ -2,6 +2,7 @@ import React from 'react';
 import './Page2.css';
 import Trivia from '../Trivia/Trivia';
 import triviaData from './triviaData';
+import { nanoid } from 'nanoid'
 
 function Page2() {
   const [trivias,setTrivias] = React.useState(triviaData);
@@ -21,28 +22,23 @@ function Page2() {
       console.log("----------------------------------------");
     });
   }
-
-  // console.log(triviaData.results);
   
   const vTrivia = triviaData.results.map( (data) => {
+    // console.log(data);
     let allAnswers = data.incorrect_answers;
       if (!allAnswers.includes(data.correct_answer)) {
         allAnswers.push(data.correct_answer);
       }
       const shuffledArray = allAnswers.sort((a, b) => 0.5 - Math.random());
-      // console.log(shuffledArray);
       
-    return <Trivia question={data.question} answers={shuffledArray}  />
-    
+    return <Trivia key={nanoid()} question={data.question} 
+                  answers={shuffledArray} 
+                  correct_answer={data.correct_answer}  />
   });
-
-
 
   return (
     <div className="page2--container">
-      {/* <Trivia question="hola"/> */}
       {vTrivia}
-
       <button className="trivia--button">Check answers</button>
     </div>
   );

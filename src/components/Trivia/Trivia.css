@@ -1,0 +1,28 @@
+.box {
+    display: flex;
+    flex-direction: column;
+}
+.trivia--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 400px;
+    margin: 10px 0px;
+    gap: 10px;
+}
+
+hr {
+    width: 400px;
+    height: 0px;
+    left: 75px;
+    top: 107px;
+
+    border: 0.794239px solid #DBDEF0;
+    transform: rotate(-0.05deg);
+}
+
+.trivia--button {   
+    background: #4D5B9E;
+    border-radius: 10px;
+    margin: 0 auto;
+}

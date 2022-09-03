@@ -1,0 +1,25 @@
+.answer--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.answer--button {
+    padding: 4px 19px;
+    
+    /* Unholded button */
+    background-color: #F5F7FB;
+    color: #293264;
+
+    /* Holded button */
+    /* background-color: #D6DBF5; */
+}
+
+.answer--button--selected {
+    padding: 4px 19px;
+    
+    /* Unholded button */
+    background-color: #D6DBF5;
+    color: #293264;
+
+}

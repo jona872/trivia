@@ -1,0 +1,11 @@
+.app--container {
+  /* The image used */
+  background-image: url("fondo.png");
+
+  /* Center and scale the image nicely */
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  padding-top: 40px;
+}

@@ -14,7 +14,6 @@ function Trivia(props) {
   // });
 
   const [arrayNumbers, setArrayNumbers] = React.useState(initialSetup());
-
   function initialSetup() {
     let resu = [];
     for (let i = 0; i < Object.keys(props.answers).length; i++) {
@@ -27,21 +26,23 @@ function Trivia(props) {
     }
     return resu;
   }
+  // console.log(arrayNumbers);
 
-  console.log(arrayNumbers);
+  const vAnsers = arrayNumbers.map((data) => {
+    console.log(data);
+    return <Answer key={data.id} id={data.id}
+      isHeld={data.isHeld} 
+      value={data.value} />
+  }
 
-  // const vAnsers = arrayNumbers.map((data) => {
-  //   console.log(data);
-  // }
-
-  // );
+  );
 
   // console.log(props);
   return (
     <div className="box">
       <div className="trivia--container">
         <Question value={props.question} />
-        {/* <Answer value={props.answers} /> */}
+        {vAnsers}
         <hr />
       </div>
     </div>

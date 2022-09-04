@@ -2,36 +2,20 @@ import './Answer.css';
 import React from 'react';
 
 function Answer(props) {
-  // const [answers, setAnswers] = React.useState({
-  //   id: 0,
-  //   answer: props.value,
-  //   isHeld: false
-  // });
+  const styles = {
+    backgroundColor: props.holded ? "#D6DBF5" : "#F5F7FB"
+  }
 
-//   function handleClick() {
-//     setAnswers(prevState => {
-//       return {
-//         ...prevState,
-//         isHeld: !prevState.isHeld
-//       }
-//       } 
-//     )
-// }
+  return (
 
-// const vAnswers = props.value.map((item) => {
-//   return <button
-//     className="answer--button"
-//     onClick={handleClick}
-//   >
-//     {item}
-//   </button>
-// });
-
-return (
-  <div className="answer--container">
-    <button className="answer--button" id={props.id} isHeld={props.isHeld} > {props.value}  </button>
-  </div>
-);
+    <button style={styles} 
+      className="answer--button"
+      id={props.id}
+      holded={props.holded.toString()} 
+      onClick={props.handleClick} >
+      {props.value}
+    </button>
+  );
 }
 
 export default Answer;

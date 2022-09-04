@@ -6,6 +6,7 @@ import Answer from '../Answer/Answer';
 // import triviaData from './triviaData';
 
 function Trivia(props) {
+  console.log(props);
   
   const [arrayNumbers, setArrayNumbers] = React.useState(initialSetup()); //Answers
   const [question, setQuestion] = React.useState(props.question);    
@@ -18,23 +19,25 @@ function Trivia(props) {
         {
           key: i, id: i,
           value: props.answers[i],
-          isHeld: false
+          isHeld: false,
+          isCorrect: false
         });
     }
     return resu;
   }
 
 
-  function toogler(id) {
-    setArrayNumbers(prevState => prevState.map(answer => {
+  function toogler(id) {   
+    setArrayNumbers(prevState => prevState.map(answer => {     
       return (answer.id === id) ?
         {
           ...answer,
-          isHeld: !answer.isHeld
+          isHeld: !answer.isHeld,
+          isCorrect: (correctAnswer === answer.value) ? true : false
         }
         :
         answer
-    }))
+    }))    
   }
 
   const vAnsers = arrayNumbers.map((data) => {
@@ -49,13 +52,15 @@ function Trivia(props) {
   return (
     <div className="box">
       <div className="trivia--container">
+
         <Question value={props.question} />
 
         <div className="answer--container">
           {vAnsers}
-        </div>    
+        </div>            
         
         <hr />
+
       </div>
     </div>
   );

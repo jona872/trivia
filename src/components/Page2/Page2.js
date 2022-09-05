@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid'
 
 function Page2() {
   const [trivias, setTrivias] = React.useState(triviaData);
-  const [game, setGame] = React.useState([]);
+  const [gameState, setGameState] = React.useState([]);
 
   let vGame = [];
 
@@ -22,20 +22,23 @@ function Page2() {
       question: data.question,
       answers: shuffledArray,
       correct_answer: data.correct_answer,
-      patherCorrect: false
+      selected_answer: '',
+      patherCorrect: false,
+      points: 0
     }
+
     vGame.push(triviaRow);
 
     return <Trivia key={nanoid()} question={data.question}
       answers={shuffledArray}
       correct_answer={data.correct_answer}
-      is_correct={data.patherCorrect}
-      />
+      is_correct= {false}
+    />
   });
 
   function submit() {
-    console.log("asd");
-    console.log(vGame);
+    // setGameState(vGame)
+    // console.log(gameState);
   }
 
   return (

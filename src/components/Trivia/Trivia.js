@@ -1,48 +1,45 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import './Trivia.css';
 import Question from '../Question/Question';
 import Answer from '../Answer/Answer';
-// import triviaData from './triviaData';
 
 function Trivia(props) {
-  console.log(props);
-  
+
   const [arrayNumbers, setArrayNumbers] = React.useState(initialSetup()); //Answers
-  const [question, setQuestion] = React.useState(props.question);    
-  const [correctAnswer, setCorrectAnswer] = React.useState(props.correct_answer);
-    
+
   function initialSetup() {
     let resu = [];
-    for (let i = 0; i < Object.keys(props.answers).length; i++) {      
+    for (let i = 0; i < Object.keys(props.answers).length; i++) {
       resu.push(
         {
           key: i, id: i,
           value: props.answers[i],
           isHeld: false,
-          isCorrect: false
-        });
+          isCorrect: props.is_correct
+        }
+      );
     }
     return resu;
   }
 
 
   function toogler(id) {   
-    setArrayNumbers(prevState => prevState.map(answer => {     
+    setArrayNumbers(prevState => prevState.map(answer => {            
       return (answer.id === id) ?
         {
           ...answer,
           isHeld: !answer.isHeld,
-          isCorrect: (correctAnswer === answer.value) ? true : false
+          is_correct: (props.correct_answer === answer.value) ? true : false
         }
         :
         answer
-    }))    
+    }))
   }
 
   const vAnsers = arrayNumbers.map((data) => {
+    // console.log(data);
     return <Answer key={data.id} id={data.id}
-      holded={data.isHeld}  
+      holded={data.isHeld}
       value={data.value}
       handleClick={() => toogler(data.id)} />
   }
@@ -57,8 +54,8 @@ function Trivia(props) {
 
         <div className="answer--container">
           {vAnsers}
-        </div>            
-        
+        </div>
+
         <hr />
 
       </div>

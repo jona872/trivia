@@ -11,7 +11,8 @@ const triviaData = {
          "incorrect_answers": [
             "Hola",
             "Au Revoir",
-            "Salir"
+            "Salir",
+            "Adios"
          ]
       },
       {
